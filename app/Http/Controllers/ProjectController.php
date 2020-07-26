@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return Projects::get();
+        return Projects::filter($request)->get();
     }
 }
