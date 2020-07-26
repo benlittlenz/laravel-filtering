@@ -9,6 +9,13 @@ class ProjectController extends Controller
 {
     public function index(Request $request)
     {
-        return Projects::filter($request)->get();
+        return Projects::filter($request, $this->getFilters())->get();
+    }
+
+    protected function getFilters()
+    {
+        return [
+            //
+        ];
     }
 }

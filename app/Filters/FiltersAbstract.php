@@ -20,9 +20,19 @@ abstract class FiltersAbstract
     {
         //Looping through all filters defined in ProjectFilters,
         //Then grabbing name of one of the filters i.e. (status)
-        foreach ($this->getFilters() as $filter => $class) {
-            var_dump($this->resolveFilter($filter));
+        foreach ($this->getFilters() as $filter => $value) {
+            $this->resolveFilter($filter)->filter($builder, $value);
+
         }
+
+        return $builder;
+    }
+
+    public function add(array $filters)
+    {
+        $this->filters = array_merge($this->filters, $filters);
+
+        return $this;
     }
 
     //Filter the filters as defined in ProjectFilters
